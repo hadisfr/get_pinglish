@@ -38,4 +38,4 @@ def get_pinglish_from_word(word, full_res=True):
 
 def get_pinglish(text):
     """get Pinglish form of a text."""
-    return get_pinglish_from_word(text, False)
+    return "".join([word["suggestions"][0] for word in _call_api(text)])
