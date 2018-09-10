@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from . import *  # noqa
+from get_pinglish import get_pinglish
 
 if __name__ == '__main__':
-    pass
+    print(get_pinglish(input()))
