@@ -3,7 +3,7 @@ import json
 from random import randint
 
 
-def call_api(text):
+def _call_api(text):
     endpoint = "http://www.virastlive.com/trans.php"
     res = requests.post(
         endpoint,
@@ -30,10 +30,12 @@ def call_api(text):
         raise RuntimeError("%d: %s" % (res.status_code, res.text))
 
 
-def get_pinglish_from_word(word, full_res):
-    suggestions = call_api(word)[0]["suggestions"]
+def get_pinglish_from_word(word, full_res=True):
+    """get Pinglish form of a single word."""
+    suggestions = _call_api(word)[0]["suggestions"]
     return suggestions if full_res else suggestions[0]
 
 
-def get_pinglish(word, full_res=False):
-    return get_pinglish_from_word(word, full_res)
+def get_pinglish(text):
+    """get Pinglish form of a text."""
+    return get_pinglish_from_word(text, False)
